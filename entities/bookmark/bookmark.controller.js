@@ -12,7 +12,6 @@ const image_service_1 = require("../image/image.service");
 const bookmarkExceptionMessages_1 = require("./constant/bookmarkExceptionMessages");
 const chip_service_1 = require("../chip/chip.service");
 const folder_service_1 = require("../folder/folder.service");
-const logger_1 = require("../../logger/logger");
 const bookmark_1 = require("../../utils/bookmark");
 const bookmarkSucessMessages_1 = require("./constant/bookmarkSucessMessages");
 dotenv_1.default.config();
@@ -193,7 +192,6 @@ const searchByTitle = async (req, res) => {
             throw new Error(bookmarkExceptionMessages_1.bookmarkExceptionMessages.SEARCH_QUERY_EMPTY);
         }
         const result = await (0, bookmark_service_1.getBookmarksByTitle)(title, folder_id);
-        logger_1.logger.error(result);
         res.status(200).json({ status: true, data: result });
     }
     catch (error) {
