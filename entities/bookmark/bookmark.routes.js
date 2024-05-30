@@ -10,7 +10,8 @@ const authentication_middleware_1 = require("../../auth/middleware/authenticatio
 const joiValidationMiddleware_1 = __importDefault(require("../../auth/middleware/joiValidationMiddleware"));
 const bookmark_schema_1 = __importDefault(require("./bookmark.schema"));
 const router = express_1.default.Router();
-const upload = (0, multer_1.default)({ dest: 'temp/' });
+const storage = multer_1.default.memoryStorage();
+const upload = (0, multer_1.default)({ storage });
 router.use(authentication_middleware_1.verifyToken);
 router.get('/recent', bookmark_controller_1.getRecentBookmarks)
     .delete('/recent/:id', bookmark_controller_1.deleteRecentBookmark)
